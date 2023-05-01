@@ -27,7 +27,7 @@
             <button type="button" class="btn" onclick="loadNames()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         <div id="staff_box">
-            <div id="staff_data"></div>
+            <div id="staff_data" onclick="loadpage()"></div>
         </div>
     </div>
     
@@ -38,12 +38,19 @@
          var cont = document.getElementsByClassName("container")
          var dep = document.getElementById("bar")
         function bar(){
-            dep.style.display="block"
+            dep.style.display="block";
         }
         function con(){
-            dep.style.display="none"
+            dep.style.display="none";
         }
-        setInterval(document.getElementById("search_bar"));
+        setInterval(document.getElementById("search_bar"),1000);
+        function loadpage() {
+            window.location.href = "http://127.0.0.1:5500/profile.html";
+            var nameee = localStorage.getItem("dataaa");
+            localStorage.clear();
+            localStorage.setItem("name",nameee);
+            // console.log(JSON.parse(localStorage.getItem("name"))[0].STAFF_CODE);
+        }
         async function loadNames() {
             // localStorage.clear()
         // window.location.reload()
@@ -54,9 +61,10 @@
                 const response = await fetch("sample.json");
             const names = await response.json();
             localStorage.setItem("dataaa",JSON.stringify(names));
-            console.log("none");
+            // console.log("none");
             const ele = JSON.parse(localStorage.getItem("dataaa"));
             ele.forEach(element => {
+                // console.log(element);
             document.getElementById("staff_data").innerHTML += `<div id="staff_data1">NAME : ${element.STAFF_NAME}<br>STAFF CODE : ${element.STAFF_CODE}<br>DEPARTMENT : ${element.STAFF_DEPARTMENT}<br>EMAIL : ${element.STAFF_EMAILID}<br> CONTACT NO : ${element.STAFF_CONTACT_NO}</div>`;
             // <div>{element.STAFF_NAME}</div>
 });
@@ -66,11 +74,11 @@
                 console.log("not none");
                 const response = await fetch("sample.json");
                 const names = await response.json();
-                console.log(names);
+                // console.log(names);
                 var filter_data = names.filter(function (entry) {
                 return entry.STAFF_CODE == document.getElementById("search_bar").value || entry.STAFF_DEPARTMENT == document.getElementById("search_bar").value || entry.STAFF_NAME == document.getElementById("search_bar").value;
                 });
-                console.log(filter_data);
+                // console.log(filter_data);
                 localStorage.setItem("dataaa",JSON.stringify(filter_data));
                 const ele = JSON.parse(localStorage.getItem("dataaa"));
             ele.forEach(element => {
@@ -86,7 +94,7 @@ window.onload = loadNames;
 // ele.array.forEach(element => {
 //     console.log(element.STAFF_NAME);
 // });
-console.log(ele[0]);
+// console.log(ele[0]);
 
 </script>
     </script>
