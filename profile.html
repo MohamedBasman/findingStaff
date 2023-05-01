@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div>
+            <div id="name"></div>
+            <div id="code"></div>
+            <div id="dept"></div>
+            <div id="email"></div>
+            <div id="contact"></div>
+        </div>
+        <img src="timetable.png"></img>
+    </body>
+    <script>
+        var ele = JSON.parse(localStorage.getItem("name"));
+        // console.log(ele[0].STAFF_CODE);
+        document.getElementById("name").innerHTML += ele[0].STAFF_NAME;
+        document.getElementById("code").innerHTML += ele[0].STAFF_CODE;
+        document.getElementById("dept").innerHTML += ele[0].STAFF_DEPARTMENT;
+        document.getElementById("email").innerHTML += ele[0].STAFF_EMAILID;
+        document.getElementById("contact").innerHTML += ele[0].STAFF_CONTACT_NO;
+
+        // ele.forEach(element => {
+        //     console.log(element);
+            // document.getElementById("name").innerHTML += `<div id="staff_data1">NAME : ${element.STAFF_NAME}<br>STAFF CODE : ${element.STAFF_CODE}<br>DEPARTMENT : ${element.STAFF_DEPARTMENT}<br>EMAIL : ${element.STAFF_EMAILID}<br> CONTACT NO : ${element.STAFF_CONTACT_NO}</div>`;
+            // <div>{element.STAFF_NAME}</div>
+        // });
+    // window.onload = abcd;
+        
+    </script>
+</html>
